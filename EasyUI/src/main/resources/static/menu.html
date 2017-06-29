@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="keywords" content="jquery,ui,easy,easyui,web">
+	<meta name="description" content="easyui help you build your web page easily!">
+	<title>EasyUI</title>
+	<link rel="stylesheet" type="text/css" href="http://www.jeasyui.com/easyui/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="http://www.jeasyui.com/easyui/themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="http://www.jeasyui.com/easyui/demo/demo.css">
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.min.js"></script>
+	<script type="text/javascript" src="http://www.jeasyui.com/easyui/jquery.easyui.min.js"></script>
+	<script type="text/javascript" src="http://www.jeasyui.com/easyui/jquery.edatagrid.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#button').click(function() {
+				$('#mm').menu('show', {
+					left: 100,
+					top: 100
+				});
+			});
+		});
+	</script>
+</head>
+<body>
+<input id="button" type="button" value="Open" />
+<div id="mm" class="easyui-menu" style="width:120px;">
+    <div onclick="javascript:alert('new')">New</div>
+    <div>
+        <span>Open</span>
+        <div style="width:150px;">
+            <div><b>Word</b></div>
+            <div>Excel</div>
+            <div>PowerPoint</div>
+        </div>
+    </div>
+    <div icon="icon-save">Save</div>
+    <div class="menu-sep"></div>
+    <div>Exit</div>
+</div>
+</body>
+</html>
