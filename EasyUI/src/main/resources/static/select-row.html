@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="jquery,ui,easy,easyui,web">
+<meta name="description" content="easyui help you build your web page easily!">
+<title>EasyUI</title>
+<link rel="stylesheet" type="text/css" href="jquery-easyui-1.5.2/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="jquery-easyui-1.5.2/themes/icon.css">
+<link rel="stylesheet" type="text/css" href="jquery-easyui-1.5.2/themes/color.css">
+<link rel="stylesheet" type="text/css" href="jquery-easyui-1.5.2/demo/demo.css">
+<link rel="stylesheet" type="text/css" href="easyui-framework.css">
+<script type="text/javascript" src="jquery-easyui-1.5.2/jquery.min.js"></script>
+<script type="text/javascript" src="jquery-easyui-1.5.2/jquery.easyui.min.js"></script>
+<script type="text/javascript">
+function selectSingleRow() {
+	var row = $('#tt').datagrid('getSelected');
+	if (row) {
+	    alert('Item ID:'+row.itemid+"\nPrice:"+row.listprice);
+	}	
+}
+
+function selectMultipleRows() {
+	var ids = [];
+	var rows = $('#tt').datagrid('getSelections');
+	for(var i=0; i<rows.length; i++){
+	    ids.push(rows[i].itemid);
+	}
+	alert(ids.join('\n'));
+}
+$(document).ready(function() {
+	
+});
+</script>
+</head>
+<body>
+<input type="button" value="Single Select" onclick="selectSingleRow()" />
+<input type="button" value="Multiple Select" onclick="selectMultipleRows()" />
+<table id="tt" class="easyui-datagrid" style="width:600px;height:250px"
+        url="data/datagrid_data.json"
+        title="Load Data" iconCls="icon-save">
+    <thead>
+        <tr>
+            <th field="itemid" width="80">Item ID</th>
+            <th field="productid" width="80">Product ID</th>
+            <th field="listprice" width="80" align="right">List Price</th>
+            <th field="unitcost" width="80" align="right">Unit Cost</th>
+            <th field="attr1" width="150">Attribute</th>
+            <th field="status" width="60" align="center">Stauts</th>
+        </tr>
+    </thead>
+    <tbody>                            
+        <tr>                           
+            <td>Data 11</td>            
+            <td>Data 2</td>            
+            <td>Data 3</td>            
+            <td>Data 4</td>            
+            <td>Data 5</td>            
+            <td>Data 6</td>            
+        </tr>                          
+        <tr>                           
+            <td>Data 12</td>            
+            <td>Data 2</td>            
+            <td>Data 3</td>            
+            <td>Data 4</td>            
+            <td>Data 5</td>            
+            <td>Data 6</td>            
+        </tr>                          
+        <tr>                           
+            <td>Data 13</td>            
+            <td>Data 2</td>            
+            <td>Data 3</td>            
+            <td>Data 4</td>            
+            <td>Data 5</td>            
+            <td>Data 6</td>            
+        </tr>                          
+        <tr>                           
+            <td>Data 14</td>            
+            <td>Data 2</td>            
+            <td>Data 3</td>            
+            <td>Data 4</td>            
+            <td>Data 5</td>            
+            <td>Data 6</td>            
+        </tr>                          
+    </tbody>  
+</table>
+</body>
+</html>
