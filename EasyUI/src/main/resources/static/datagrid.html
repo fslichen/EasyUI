@@ -15,14 +15,58 @@
 <script type="text/javascript" src="jquery-easyui-1.5.2/jquery.easyui.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
-			
+	// Defines events for a data grid.
+	$('#tt')	.datagrid({
+ 		onSelect : function(index, row) {
+			alert('The row index is ' + index + ' and the row is ' + JSON.stringify(row) + '.');
+		},  
+		onClickRow : function(index, row) {
+			alert('Row ' + index + ' has been clicked.');
+		},
+		onDblClickRow : function(index, row) {
+			alert('Row ' + index + ' has been double clicked.');
+		},// Activate this function by deactivating the onSelect method.
+		onClickCell : function(index, field, value) {
+			alert('Index = ' + index + ' Field = ' + field + ' Value = ' + value);
+		},
+		onDblClickCell : function(index, field, value) {
+			alert('The cell has been double clicked.');
+		},// Deactive the previous method if necessary.
+		onCheck : function(index, row) {
+			alert('The checked row index is ' + index + ', and the row is ' + JSON.stringify(row));
+		}, 
+		onUnselect : function(index, row) {
+			alert('The row ' + index + ' is unchecked.');
+		},
+		onCheckAll : function(rows) {
+			alert('The checked rows are ' + JSON.stringify(rows) + '.');
+		},
+		onUncheckAll : function(rows) {
+			alert('All the rows are unchecked.');
+		}
+	});	
 });
+function getColumnFields(tableId) {
+	var columnFieldArray = $('#' + tableId).datagrid('getColumnFields');
+	for (i in columnFieldArray) {// i is index rather than columnField, this is slightly different from what happens in java.
+		alert(columnFieldArray[i]);	
+	}
+}
+function load() {
+	$('#tt').datagrid('load', {
+		code: '01',
+		name: 'name01'
+	});
+}
 </script>
 </head>
 <body>
+<input type="button" value="Column Fields" onclick="getColumnFields('tt')" />
+<input type="button" value="Load" onclick="load('tt')" />
 <table id="tt" class="easyui-datagrid" style="width:600px;height:auto;">
     <thead>
         <tr>
+        		<th field="ck" checkbox="true"></th>
             <th field="name1" width="50">Col 1</th>
             <th field="name2" width="50">Col 2</th>
             <th field="name3" width="50">Col 3</th>
@@ -32,7 +76,8 @@ $(document).ready(function() {
         </tr>                          
     </thead>                           
     <tbody>                            
-        <tr>                           
+        <tr>          
+        		<td></td>                 
             <td>Data 1</td>            
             <td>Data 2</td>            
             <td>Data 3</td>            
@@ -40,7 +85,8 @@ $(document).ready(function() {
             <td>Data 5</td>            
             <td>Data 6</td>            
         </tr>                          
-        <tr>                           
+        <tr>    
+        		<td></td>                       
             <td>Data 1</td>            
             <td>Data 2</td>            
             <td>Data 3</td>            
@@ -48,7 +94,8 @@ $(document).ready(function() {
             <td>Data 5</td>            
             <td>Data 6</td>            
         </tr>                          
-        <tr>                           
+        <tr>    
+        		<td></td>                       
             <td>Data 1</td>            
             <td>Data 2</td>            
             <td>Data 3</td>            
@@ -56,7 +103,8 @@ $(document).ready(function() {
             <td>Data 5</td>            
             <td>Data 6</td>            
         </tr>                          
-        <tr>                           
+        <tr>   
+        		<td></td>                        
             <td>Data 1</td>            
             <td>Data 2</td>            
             <td>Data 3</td>            
