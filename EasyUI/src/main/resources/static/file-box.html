@@ -17,22 +17,41 @@
 $(document).ready(function() {
 			
 });
+function submit(formId, url) {
+    $('#' + formId).form({
+        url : url,
+        onSubmit : function(){
+            alert('Ready to Submit');
+        },
+        success : function(data){
+            alert(data);
+        }
+    });
+    $('#' + formId).submit();
+}
 </script>
 </head>
 <body>
-	<div class="easyui-panel" title="Upload File" style="width:100%;max-width:400px;padding:30px 60px;">
-        <div style="margin-bottom:20px">
-            <input class="easyui-textbox" label="Name:" labelPosition="top" style="width:100%">
-        </div>
-        <div style="margin-bottom:20px">
-            <input class="easyui-filebox" label="File1:" labelPosition="top" data-options="prompt:'Choose a file...'" style="width:100%">
-        </div>
-        <div style="margin-bottom:40px">
-            <input class="easyui-filebox" label="File2:" labelPosition="top" data-options="prompt:'Choose another file...'" style="width:100%">
-        </div>
-        <div>
-            <a href="#" class="easyui-linkbutton" style="width:100%">Upload</a>
-        </div>
-    </div>
+	<div class="easyui-panel" title="Upload File" style="width: 100%; max-width: 400px; padding: 30px 60px;">
+		<div style="margin-bottom: 20px">
+			<!-- Form Submit -->
+		    <form id="submit" method="post" action="http://localhost:8080/submit">
+		        <div>
+		            <label for="name">Name:</label>
+		            <input class="easyui-validatebox" type="text" name="name" data-options="required:true" />
+		        </div>
+		        <div>
+		            <label for="email">Email:</label>
+		            <input class="easyui-validatebox" type="text" name="email" data-options="validType:'email'" />
+		        </div>
+		    </form>
+		    <input class="easyui-linkbutton" type="button" onclick="submit('submit', 'http://localhost:8080/submit')" value="Submit" />
+			<!-- File Upload -->
+			<form id="upload" method="POST" enctype="multipart/form-data" action="http://localhost:8080/upload">
+				<input class="easyui-filebox" name="file" label="File:" labelPosition="top" data-options="prompt:'Choose a File'" style="width: 100%">
+			</form>
+			<input class="easyui-linkbutton" type="button" onclick="submit('upload', 'http://localhost:8080/upload')" value="Submit" />
+		</div>
+	</div>
 </body>
 </html>
